@@ -13,10 +13,18 @@ export default function TopBar() {
   return (
     <div className="top">
       <div className="topLeft">
-        <i className="topIcon fab fa-facebook-square"></i>
-        <i className="topIcon fab fa-twitter-square"></i>
-        <i className="topIcon fab fa-pinterest-square"></i>
-        <i className="topIcon fab fa-instagram-square"></i>
+        <a href="https://www.facebook.com/">
+          <i className="topIcon fab fa-facebook-square"></i>
+        </a>
+        <a href="https://twitter.com/i/flow/login">
+          <i className="topIcon fab fa-twitter-square"></i>
+        </a>
+        <a href="https://in.pinterest.com/">
+          <i className="topIcon fab fa-pinterest-square"></i>
+        </a>
+        <a href="https://www.instagram.com/?hl=en">
+          <i className="topIcon fab fa-instagram-square"></i>
+        </a>
       </div>
       <div className="topCenter">
         <ul className="topList">

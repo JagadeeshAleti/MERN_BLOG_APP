@@ -2,12 +2,24 @@ import { useContext, useState } from "react";
 import "./write.css";
 import axios from "axios";
 import { Context } from "../../context/Context";
+import { useEffect } from "react";
 
 export default function Write() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [category, setCategory] = useState("");
   const [file, setFile] = useState(null);
+  const [categories, setCategories] = useState([]);
   const { user } = useContext(Context);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const res = await axios.get("/categories");
+      setCategories(res.data);
+    };
+
+    getCategories();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,9 +27,11 @@ export default function Write() {
       username: user.username,
       title,
       desc,
+      categories: [category],
     };
+    console.log("New post Data : ", newPost);
     if (file) {
-      const data =new FormData();
+      const data = new FormData();
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
@@ -31,6 +45,7 @@ export default function Write() {
       window.location.replace("/post/" + res.data._id);
     } catch (err) {}
   };
+
   return (
     <div className="write">
       {file && (
@@ -52,15 +67,28 @@ export default function Write() {
             placeholder="Title"
             className="writeInput"
             autoFocus={true}
-            onChange={e=>setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
+          <select
+            className="categoty-dropdown"
+            onChange={(e) => {
+              setCategory(e.target.value);
+            }}
+          >
+            <option value="" selected disabled hidden>
+              Select Category
+            </option>
+            {categories.map((item) => {
+              return <option value={item.name}>{item.name}</option>;
+            })}
+          </select>
         </div>
         <div className="writeFormGroup">
           <textarea
             placeholder="Tell your story..."
             type="text"
             className="writeInput writeText"
-            onChange={e=>setDesc(e.target.value)}
+            onChange={(e) => setDesc(e.target.value)}
           ></textarea>
         </div>
         <button className="writeSubmit" type="submit">

@@ -37,11 +37,17 @@
   font-size: 30px;
   border: none;
   padding: 20px;
-  width: 70vw;
+  width: 45vw;
 }
 
 .writeInput:focus {
   outline: none;
+}
+
+.categoty-dropdown {
+  width: 150px;
+  height: 35px;
+  border: none;
 }
 
 .writeText {

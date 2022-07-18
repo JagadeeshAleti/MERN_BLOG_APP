@@ -31,7 +31,7 @@ export default function Sidebar() {
         <ul className="sidebarList">
           {cats.map((c) => (
             <Link to={`/?cat=${c.name}`} className="link">
-            <li className="sidebarListItem">{c.name}</li>
+              <li className="sidebarListItem">{c.name}</li>
             </Link>
           ))}
         </ul>
@@ -39,10 +39,18 @@ export default function Sidebar() {
       <div className="sidebarItem">
         <span className="sidebarTitle">FOLLOW US</span>
         <div className="sidebarSocial">
-          <i className="sidebarIcon fab fa-facebook-square"></i>
-          <i className="sidebarIcon fab fa-twitter-square"></i>
-          <i className="sidebarIcon fab fa-pinterest-square"></i>
-          <i className="sidebarIcon fab fa-instagram-square"></i>
+          <a className="link" href="https://www.facebook.com/">
+            <i className="sidebarIcon fab fa-facebook-square"></i>
+          </a>
+          <a className="link" href="https://twitter.com/i/flow/login">
+            <i className="sidebarIcon fab fa-twitter-square"></i>
+          </a>
+          <a className="link" href="https://in.pinterest.com/">
+            <i className="sidebarIcon fab fa-pinterest-square"></i>
+          </a>
+          <a className="link" href="https://www.instagram.com/?hl=en">
+            <i className="sidebarIcon fab fa-instagram-square"></i>
+          </a>
         </div>
       </div>
     </div>
